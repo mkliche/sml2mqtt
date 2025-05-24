@@ -15,8 +15,8 @@ COPY --from=buildimage /root/wheels /root/wheels
 COPY docker/entrypoint.sh /entrypoint.sh
 
 ENV SML2MQTT_FOLDER=/sml2mqtt \
-    USER_ID=9001 \
-    GROUP_ID=${USER_ID}
+    USER_ID=1000 \
+    GROUP_ID=100
 
 RUN set -eux; \
 # Install required build dependencies
@@ -38,4 +38,4 @@ WORKDIR /sml2mqtt
 VOLUME ["${SML2MQTT_FOLDER}"]
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["su-exec", "sml2mqtt", "tini", "--", "python", "-m", "sml2mqtt", "--config", "/sml2mqtt/config.yml"]
+CMD ["su-exec", "mk", "tini", "--", "python", "-m", "sml2mqtt", "--config", "/sml2mqtt/config.yml"]
