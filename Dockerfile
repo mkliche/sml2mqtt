@@ -4,7 +4,7 @@ COPY . /tmp/app_install
 
 RUN set -eux; \
 # Install required build dependencies
-    apk add --no-cache python3 py3-wheel py3-pip python3-dev gcc musl-dev cargo shadow; \
+    apk add --no-cache python3 py3-wheel py3-pip python3-dev gcc musl-dev cargo; \
 # wheel all required packages
     cd /tmp/app_install; \
     pip wheel --wheel-dir=/root/wheels .
@@ -20,7 +20,7 @@ ENV SML2MQTT_FOLDER=/sml2mqtt \
 
 RUN set -eux; \
 # Install required build dependencies
-    apk add --no-cache su-exec tini; \
+    apk add --no-cache su-exec tini shadow; \
 # install sml2mqtt
     pip install \
         --no-index \
