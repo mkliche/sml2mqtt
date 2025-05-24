@@ -4,7 +4,7 @@ COPY . /tmp/app_install
 
 RUN set -eux; \
 # Install required build dependencies
-    apk add --no-cache python3 py3-wheel py3-pip python3-dev gcc musl-dev cargo; \
+    apk add --no-cache python3 py3-wheel py3-pip python3-dev gcc musl-dev cargo shadow; \
 # wheel all required packages
     cd /tmp/app_install; \
     pip wheel --wheel-dir=/root/wheels .
