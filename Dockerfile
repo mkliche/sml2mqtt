@@ -38,4 +38,4 @@ WORKDIR /sml2mqtt
 VOLUME ["${SML2MQTT_FOLDER}"]
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["tini", "--", "python", "-m", "sml2mqtt", "--config", "/sml2mqtt/config.yml"]
+CMD ["su-exec", "sml2mqtt", "tini", "--", "python", "-m", "sml2mqtt", "--config", "/sml2mqtt/config.yml"]
